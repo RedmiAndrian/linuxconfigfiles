@@ -11,8 +11,8 @@ static const unsigned int systrayspacing = 2;   /* systray spacing */
 static const int systraypinningfailfirst = 1;   /* 1: if pinning fails, display systray on the first monitor, False: display systray on the last monitor*/
 static const int showsystray        = 1;
 static const int topbar             = 1;        /* 0 means bottom bar */
-static const char *fonts[]          = { "FontAwesome:size=10", "Font Awesome 5 Free:style=Solid:size=10", "Font Awesone 5 Free:style=Regular:size=10", "Font Awesome 5 Brands:style=Regular:size=10" };
-static const char dmenufont[]       = "monospace:size=10";
+static const char *fonts[]          = { "Terminus:style=Bold:size=10", "Font Awesome 5 Free:style=Solid:size=10", "Font Awesone 5 Free:style=Regular:size=10", "Font Awesome 5 Brands:style=Regular:size=10" };
+static const char dmenufont[]       = "Terminus:style=Bold:size=10";
 static const char col_gray1[]       = "#222222";
 static const char col_gray2[]       = "#444444";
 static const char col_white[]       = "#ffffff";
@@ -46,8 +46,8 @@ static const int lockfullscreen = 1; /* 1 will force focus on the fullscreen win
 static const char *upvol[]   = { "/usr/bin/pactl", "set-sink-volume", "0", "+5%",     NULL };
 static const char *downvol[] = { "/usr/bin/pactl", "set-sink-volume", "0", "-5%",     NULL };
 static const char *mutevol[] = { "/usr/bin/pactl", "set-sink-mute",   "0", "toggle",  NULL };
-static const char *brinc[] = { "light", "-A", "10", NULL };
-static const char *brdec[] = { "light", "-U", "10", NULL };
+static const char *brinc[] = { "brightnessctl", "set", "10%+" NULL};
+static const char *brdec[] = { "brightnessctl", "set", "10&-", NULL };
 static const char *roficmd[] = {"rofi", "-show", "drun", NULL};
 
 static const Layout layouts[] = {
