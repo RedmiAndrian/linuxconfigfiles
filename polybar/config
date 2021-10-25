@@ -18,7 +18,7 @@
 
 [colors]
 ;background = ${xrdb:color0:#222}
-background = #00000000
+background = #1f1f1f
 background-alt = #44466
 ;foreground = ${xrdb:color7:#222}
 foreground = #000000
@@ -30,41 +30,41 @@ alert = #bd2c40
 [bar/example]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 25
+height = 16
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0
-fixed-center = true
+fixed-center = false
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
+tray-padding = 2
+tray-position = right
+tray-background = #ededed
+
 line-size = 3
 line-color = #f00
 
-border-size = 3
-border-color = #00000000
+border-size = 8
+border-color = #1f1f1f
 
-padding-left = 1
+padding-left = 0
 padding-right = 0
 
 module-margin-left = 0
 module-margin-right = 0
+ 
 
-
-font-0 = unifont:fontformat=truetype:size=9:antialias=false;2
-font-1 = siji:pixelsize=10;1
+font-0 = GohuFont:style=14:antialias=true:size=10;2
+font-1 = siji:pixelsize=10;2
 font-2 = Font Awesome 5 Free:style=Solid:size=10;2
 font-3 = Font Awesome 5 Free:style=Regular:size=10;2
 font-4 = Font Awesome 5 Brands:style=Regular:size=10;2
 
-modules-left = i3
-modules-center = homies custom-separator xwindow custom-separator planner
-modules-right = backlight-acpi memory cpu eth date powermenu
-
-tray-position = right
-tray-padding = 3
-tray-background = #ffffff
+modules-left = i3 xwindow
+modules-center = 
+modules-right = backlight-acpi speaker-symbol pulseaudio custom-separator memory-symbol memory custom-separator cpu-symbol cpu custom-separator wifi-symbol wlan custom-separator clock-symbol date custom-separator monitor-symbol
 
 
 ;wm-restack = generic
@@ -87,8 +87,8 @@ enable-ipc = true
 [module/xwindow]
 format-padding = 5
 format-prefix = ""
-format-background = #2b2a2a
-format-foreground = #ffffff
+format-background = #1f1f1f
+format-foreground = #ededed
 type = internal/xwindow
 label = %title:0:30:...% 
 
@@ -149,32 +149,33 @@ wrapping-scroll = false
 ; Only show workspaces on the same output as the bar
 ;pin-workspaces = true
 
-label-mode-padding = 2
+label-mode-padding = 1
 label-mode-foreground = #000
 label-mode-background = ${colors.primary}
 
 ; focused = Active workspace on focused monitor
-label-focused = %icon%
-label-focused-background = #ffffff
+label-focused = %index%
+label-focused-background = #a0f774
+label-focused-foreground = #000000
 ;label-focused-underline= ${colors.primary}
-label-focused-padding = 2
+label-focused-padding = 1
 
 ; unfocused = Inactive workspace on any monitor
-label-unfocused = %icon%
-label-unfocused-background = #8a8787
-label-unfocused-foreground = #ffffff
-label-unfocused-padding = 2
+label-unfocused = %index%
+label-unfocused-background = #ededed
+label-unfocused-foreground = #000000
+label-unfocused-padding = 1
 
 ; visible = Active workspace on unfocused monitor
-label-visible = %icon%
+label-visible = %index%
 label-visible-background = ${self.label-focused-background}
 label-visible-underline = ${self.label-focused-underline}
 label-visible-padding = ${self.label-focused-padding}
 
 ; urgent = Workspace with urgency hint set
-label-urgent = %icon%
+label-urgent = %index%
 label-urgent-background = ${colors.alert}
-label-urgent-padding = 2
+label-urgent-padding = 1
 
 ws-icon-0 = 1;
 ws-icon-1 = 2;
@@ -226,51 +227,103 @@ inherit = module/xbacklight
 type = internal/backlight
 card = intel_backlight
 
-[module/planner]
-exec = echo "planner"
-format = <label>
-format-background = #00000000
-type = custom/script
-click-left = planner
-label =
-format-foreground = #ffffff
+;[module/planner]
+;exec = echo "planner"
+;format = <label>
+;format-background = #00000000
+;type = custom/script
+;click-left = planner
+;label =
+;format-foreground = #ffffff
 
 
-[module/homies]
-exec = echo "Test"
-format = <label>
-format-background = #00000000
+[module/wifi-symbol]
+format-padding = 1
 type = custom/script
-click-left = rofi -show drun
-label =
-format-foreground = #ffffff
+exec = echo "test"
+;format = <label>
+format-background = #a1e6d2
+format-foreground = #000000
+label =
+
+[module/monitor-symbol]
+format-padding = 1
+type = custom/script
+exec = echo "test"
+format-background = #a17afa
+format-foreground = #000000
+label =
+
+[module/speaker-symbol]
+type = custom/script
+exec = echo "test"
+format-padding = 1
+format-background = #ffb3fc
+format-foreground = #000000
+label =
+
+[module/memory-symbol]
+format-padding = 1
+type = custom/script
+exec = echo "test"
+;format = <label>
+format-background = #ffe054
+format-foreground = #000000
+label =
+
+[module/cpu-symbol]
+format-padding = 1
+type = custom/script
+exec = echo "test"
+;format = <label>
+format-background = #eb4d55
+format-foreground = #000000
+label =
+
+[module/clock-symbol]
+format-padding = 1
+type = custom/script
+exec = echo "test"
+;format = <label>
+format-background = #a0f774
+format-foreground = #000000
+label =
+
+;[module/homies]
+;exec = echo "Test"
+;format = <label>
+;format-background = #00000000
+;type = custom/script
+;click-left = rofi -show drun
+;label =
+;format-foreground = #ffffff
 
 [module/cpu]
-format-padding = 2
+format-padding = 1
 type = internal/cpu
 interval = 2
-format-prefix = " "
+format-prefix = ""
 format-prefix-foreground = ${colors.foreground-alt}
-format-background = #ffffff
-label = | %percentage:2%%
+format-background = #ededed
+label =%percentage:2%%
 
 [module/custom-separator]
 type = custom/script
+format-padding = 1
 exec = echo " "
 format = <label>
-format-background = #00000000
-format-padding = 1  
+format-background = #1f1f1f  
 
 [module/memory]
-format-padding = 3
-format-background = #8a8787
-format-foreground = #ffffff
+format-padding = 1
+format-background = #ededed
+format-foreground = #000000
 type = internal/memory
 interval = 2
 format-prefix = ""
 format-prefix-foreground = ${colors.foreground-alt}
 ;format-background = #4bffdc
-label = | %percentage_used%% 
+label =%percentage_used%% 
 
 [module/wlan]
 type = internal/network
@@ -278,7 +331,9 @@ interface = wlp3s0
 interval = 3.0
 
 format-connected = <ramp-signal> <label-connected>
-format-connected-underline = #9f78e1
+format-connected-background = #ededed
+format-connected-prefix = ""
+format-connected-padding = 1
 label-connected = %essid%
 
 format-disconnected =
@@ -316,15 +371,15 @@ type = internal/date
 interval = 1
 
 date =
-date-alt = " | %Y-%m-%d"
+date-alt = "%Y-%m-%d"
 
-time =  | %H:%M
+time =%I:%M %p
 time-alt = %H:%M:%S
 
-format-prefix = 
+format-prefix = ""
 format-prefix-foreground = #ffffff
-format-foreground = #ffffff
-format-background = #8a8787
+format-foreground = #000000
+format-background = #ededed
 
 label = %date% %time%
 
@@ -333,11 +388,13 @@ label = %date% %time%
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-volume = <label-volume> <bar-volume>
-label-volume = VOL %percentage%%
+format-foreground = #000000
+format-volume = <label-volume>
+label-volume =" %percentage%% "
 label-volume-foreground = ${root.foreground}
+label-volume-background = #ededed
 
-label-muted = 🔇 muted
+label-muted = 0%
 label-muted-foreground = #666
 
 bar-volume-width = 10
@@ -472,7 +529,7 @@ screenchange-reload = true
 ;compositing-background = screen
 ;compositing-foreground = source
 ;compositing-border = over
-;pseudo-transparency = false
+pseudo-transparency = true
 
 [global/wm]
 margin-top = 5
