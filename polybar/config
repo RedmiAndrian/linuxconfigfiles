@@ -39,14 +39,14 @@ fixed-center = false
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-tray-padding = 2
+tray-padding = 7
 tray-position = right
-tray-background = #ededed
+tray-background = #1f1f1f
 
 line-size = 3
 line-color = #f00
 
-border-size = 8
+border-size = 5
 border-color = #1f1f1f
 
 padding-left = 0
@@ -64,7 +64,7 @@ font-4 = Font Awesome 5 Brands:style=Regular:size=10;2
 
 modules-left = i3 xwindow
 modules-center = 
-modules-right = backlight-acpi speaker-symbol pulseaudio custom-separator memory-symbol memory custom-separator cpu-symbol cpu custom-separator wifi-symbol wlan custom-separator clock-symbol date custom-separator monitor-symbol
+modules-right = backlight-acpi speaker-symbol pulseaudio custom-separator memory-symbol memory custom-separator cpu-symbol cpu custom-separator wifi-symbol wlan custom-separator clock-symbol date custom-separator
 
 
 ;wm-restack = generic
