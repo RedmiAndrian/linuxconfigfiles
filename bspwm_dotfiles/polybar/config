@@ -40,8 +40,12 @@ background = ${colors.background}
 foreground = ${colors.foreground}
 
 tray-padding = 7
-tray-position = right
-tray-background = #ededed
+tray-position = left
+tray-background = #1f1f1f
+tray-offset-x = 250
+tray-detached = true
+
+
 
 line-size = 3
 line-color = #f00
@@ -62,9 +66,9 @@ font-2 = Font Awesome 5 Free:style=Solid:size=10;2
 font-3 = Font Awesome 5 Free:style=Regular:size=10;2
 font-4 = Font Awesome 5 Brands:style=Regular:size=10;2
 
-modules-left = bspwm xwindow
-modules-center = 
-modules-right = backlight-acpi speaker-symbol pulseaudio custom-separator memory-symbol memory custom-separator cpu-symbol cpu custom-separator wifi-symbol wlan custom-separator clock-symbol date custom-separator monitor-symbol
+modules-left = bspwm
+modules-center = xwindow
+modules-right = backlight-acpi speaker-symbol pulseaudio custom-separator memory-symbol memory custom-separator cpu-symbol cpu custom-separator battery-symbol battery custom-separator wifi-symbol wlan custom-separator clock-symbol date
 
 
 ;wm-restack = generic
@@ -90,7 +94,7 @@ format-prefix = ""
 format-background = #1f1f1f
 format-foreground = #ededed
 type = internal/xwindow
-label = %title:0:50:...% 
+label = %title:0:20:...% 
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -148,7 +152,7 @@ ws-icon-4 = 5;
 ws-icon-5 = 6;
 ws-icon-6 = 7;
 ws-icon-7 = 8;
-ws-icon-8 = 9;
+ws-icon-8 = 9;
 ws-icon-9 = 10;十
 
 
@@ -260,7 +264,7 @@ exec = echo "test"
 format-background = #a1e6d2
 format-foreground = #000000
 label =
-click-left = alacritty -e nmtui
+click-left = kitty -e nmtui
 
 [module/monitor-symbol]
 format-padding = 1
@@ -286,6 +290,15 @@ exec = echo "test"
 format-background = #ffe054
 format-foreground = #000000
 label =
+
+[module/battery-symbol]
+format-padding = 1
+type = custom/script
+exec = echo "test"
+format-background = #ff802b
+format-foreground = #000000
+label =
+
 
 [module/cpu-symbol]
 format-padding = 1
@@ -464,33 +477,45 @@ type = internal/battery
 battery = BAT0
 adapter = AC
 full-at = 98
+format-padding = 2
+format-charging-background = #ededed
+format-charging-foreground = #000000
+format-charging-padding = 1 
 
-format-charging = <animation-charging> <label-charging>
-format-charging-underline = #ffb52a
+format-full-background = #ededed
+format-full-foreground = #000000
+format-full-padding = 1
 
-format-discharging = <animation-discharging> <label-discharging>
-format-discharging-underline = ${self.format-charging-underline}
+format-discharging-background = #ededed
+format-discharging-foreground = #000000
+format-discharging-padding = 1
 
-format-full-prefix = " "
-format-full-prefix-foreground = ${colors.foreground-alt}
-format-full-underline = ${self.format-charging-underline}
+;format-charging = <animation-charging> <label-charging>
+;format-charging-underline = #ffb52a
 
-ramp-capacity-0 = 
-ramp-capacity-1 = 
-ramp-capacity-2 = 
-ramp-capacity-foreground = ${colors.foreground-alt}
+;format-discharging = <animation-discharging> <label-discharging>
+;format-discharging-underline = ${self.format-charging-underline}
 
-animation-charging-0 = 
-animation-charging-1 = 
-animation-charging-2 = 
-animation-charging-foreground = ${colors.foreground-alt}
-animation-charging-framerate = 750
+;format-full-prefix = " "
+;format-full-prefix-foreground = ${colors.foreground-alt}
+;format-full-underline = ${self.format-charging-underline}
 
-animation-discharging-0 = 
-animation-discharging-1 = 
-animation-discharging-2 = 
-animation-discharging-foreground = ${colors.foreground-alt}
-animation-discharging-framerate = 750
+;ramp-capacity-0 = 
+;ramp-capacity-1 = 
+;ramp-capacity-2 = 
+;ramp-capacity-foreground = ${colors.foreground-alt}
+
+;animation-charging-0 = 
+;animation-charging-1 = 
+;animation-charging-2 = 
+;animation-charging-foreground = ${colors.foreground-alt}
+;animation-charging-framerate = 750
+
+;animation-discharging-0 = 
+;animation-discharging-1 = 
+;animation-discharging-2 = 
+;animation-discharging-foreground = ${colors.foreground-alt}
+;animation-discharging-framerate = 750
 
 [module/temperature]
 type = internal/temperature
