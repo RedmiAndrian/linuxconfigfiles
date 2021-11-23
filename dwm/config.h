@@ -13,15 +13,21 @@ static const int showsystray        = 1;
 static const int topbar             = 1;        /* 0 means bottom bar */
 static const char *fonts[]          = { "Terminus:style=Bold:size=10", "Font Awesome 5 Free:style=Solid:size=10", "Font Awesone 5 Free:style=Regular:size=10", "Font Awesome 5 Brands:style=Regular:size=10" };
 static const char dmenufont[]       = "Terminus:style=Bold:size=10";
-static const char col_gray1[]       = "#222222";
+static const char col_gray1[]       = "#1f1f1f";
 static const char col_gray2[]       = "#444444";
-static const char col_white[]       = "#ffffff";
+static const char col_white[]       = "#ededed";
+static const char col_green[]	    = "#a0f774";
 static const char col_black[]       = "#000000";
 static const char col_orange[]        = "#ff7700";
 static const char *colors[][3]      = {
 	/*               fg         bg         border   */
-	[SchemeNorm] = { col_white, col_gray1, col_black },
-	[SchemeSel]  = { col_black, col_orange,  col_orange  },
+	[SchemeNorm] = { col_white, col_gray1, "#000000" },
+	[SchemeSel]  = { col_orange, col_gray1,  col_orange  },
+	[SchemeStatus]  = { col_white, col_gray1,  "#000000"  }, // Statusbar right {text,background,not used but cannot be empty}
+	[SchemeTagsSel]  = { col_green, col_gray1,  "#000000"  }, // Tagbar left selected {text,background,not used but cannot be empty}
+    [SchemeTagsNorm]  = { col_white, col_gray1,  "#000000"  }, // Tagbar left unselected {text,background,not used but cannot be empty}
+    [SchemeInfoSel]  = { col_white, col_gray1,  "#000000"  }, // infobar middle  selected {text,background,not used but cannot be empty}
+    [SchemeInfoNorm]  = { col_white, col_gray1,  "#000000"  }, // infobar middle  unselected {text,background,not used but cannot be empty}
 };
 
 static const char *const autostart[] = {
@@ -33,7 +39,7 @@ static const char *const autostart[] = {
 
 
 /* tagging */
-static const char *tags[] = { "", "", "", "", "", "", "", "", "" };
+static const char *tags[] = { "", "", "", "", "", };
 
 static const Rule rules[] = {
 	/* xprop(1):
@@ -83,7 +89,7 @@ static const char *termcmd[]  = { "kitty", NULL };
 
 static Key keys[] = {
 	/* modifier                     key        function        argument */
-	{ MODKEY,                       XK_d,      spawn,          {.v = dmenucmd } },
+	{ MODKEY,                       XK_d,      spawn,          {.v = roficmd } },
 	{ MODKEY|ShiftMask,             XK_Return, spawn,          {.v = termcmd } },
 	{ MODKEY,                       XK_b,      togglebar,      {0} },
 	{ MODKEY,                       XK_j,      focusstack,     {.i = +1 } },
