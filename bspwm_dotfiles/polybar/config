@@ -16,11 +16,6 @@
 ;
 ;==========================================================
 
-
-[glyph]
-gleft = 
-gright = 
-
 [colors]
 ;background = ${xrdb:color0:#222}
 background = #1f1f1f
@@ -35,26 +30,23 @@ alert = #bd2c40
 [bar/example]
 ;monitor = ${env:MONITOR:HDMI-1}
 width = 100%
-height = 14
+height = 16
 ;offset-x = 1%
 ;offset-y = 1%
 radius = 0
 fixed-center = false
-override-redirect = true
 
 background = ${colors.background}
 foreground = ${colors.foreground}
 
-tray-padding = 3
+tray-padding = 7
 tray-position = right
 tray-background = #1f1f1f
-
-
 
 line-size = 3
 line-color = #f00
 
-border-size = 1
+border-size = 5
 border-color = #1f1f1f
 
 padding-left = 0
@@ -64,15 +56,15 @@ module-margin-left = 0
 module-margin-right = 0
  
 
-font-0 = Gohufont:style=Bold:antialias=true:size=10;1
-font-1 = siji:pixelsize=10;1
-font-2 = Font Awesome 5 Free:style=Solid:size=10;1
-font-3 = Font Awesome 5 Free:style=Regular:size=10;1
-font-4 = Font Awesome 5 Brands:style=Regular:size=10;1
+font-0 = GohuFont:style=14:antialias=true:size=10;2
+font-1 = siji:pixelsize=10;2
+font-2 = Font Awesome 6 Free Solid:style=Solid:size=10;2
+font-3 = Font Awesome 6 Free:style=Regular:size=10;2
+font-4 = Font Awesome 6 Brands:style=Regular:size=10;2
 
-modules-left = bspwm
-modules-center = xwindow
-modules-right = backlight-acpi pulseaudio custom-separator  memory custom-separator cpu custom-separator battery_andmod custom-separator  wlan custom-separator  date
+modules-left = bspwm xwindow
+modules-center = 
+modules-right = backlight-acpi monitor-symbol battery custom-separator speaker-symbol pulseaudio custom-separator memory-symbol memory custom-separator cpu-symbol cpu custom-separator wifi-symbol wlan custom-separator clock-symbol date custom-separator
 
 
 ;wm-restack = generic
@@ -98,7 +90,7 @@ format-prefix = ""
 format-background = #1f1f1f
 format-foreground = #ededed
 type = internal/xwindow
-label = %title:0:35:...% 
+label = %title:0:30:...% 
 
 [module/xkeyboard]
 type = internal/xkeyboard
@@ -128,41 +120,40 @@ label-unmounted-foreground = ${colors.foreground-alt}
 
 [module/bspwm]
 type = internal/bspwm
-; a0f774
-label-focused = ${{self.circle-empty}}
-label-focused-background = #1f1f1f
-label-focused-foreground = #a0f774
+
+label-focused = %icon%
+label-focused-background = #a0f774
+label-focused-foreground = #000000
 label-focused-padding = 1
 
-label-occupied = ${{self.circle-empty}}
-label-occupied-background = #1f1f1f
-label-occupied-foreground = #ededed
+label-occupied = %icon%
+label-occupied-background = #7a7a7a
+label-occupied-foreground = #a0f774
 label-occupied-padding = 1
 
-label-urgent = ${{self.circle-empty}}
+label-urgent = %icon%
 label-urgent-background = ${colors.alert}
+label-foreground = #ffffff
 label-urgent-padding = 1
 
-;7a7a7a
-label-empty = ${{self.circle-empty}}
-label-empty-background = #1f1f1f
-label-empty-foreground = #7a7a7a
+label-empty = %icon%
+label-empty-foreground = #000000
+label-empty-background = #ffffff
 label-empty-padding = 1
 
-ws-icon-0 = 1;
+ws-icon-0 = 1;
 ws-icon-1 = 2;
 ws-icon-2 = 3;
-ws-icon-3 = 4;
-ws-icon-4 = 5;
-ws-icon-5 = 6;
+ws-icon-3 = 4;
+ws-icon-4 = 5;
+ws-icon-5 = 6;
 ws-icon-6 = 7;
 ws-icon-7 = 8;
-ws-icon-8 = 9;
+ws-icon-8 = 9;
 ws-icon-9 = 10;十
 
-
 ; Separator in between workspaces
-label-separator = 
+;label-separator = " "
 
 [module/i3]
 type = internal/i3
@@ -266,81 +257,43 @@ format-padding = 1
 type = custom/script
 exec = echo "test"
 ;format = <label>
-format-background = #1f1f1f
-format-foreground = #a1e6d2
+format-background = #a1e6d2
+format-foreground = #000000
 label =
-click-left = kitty -e nmtui
-
-[command]
-battery = exec upower -i /org/freedesktop/UPower/devices/battery_BAT0 | awk '/percentage/ {print $2}'
-
-[module/battery_andmod]
-format-padding = 1
-type = custom/script
-interval = 30.0
-format-background = #1f1f1f
-format-foreground = #ff802b
-;upower -i /org/freedesktop/UPower/devices/battery_BAT0 | awk '/percentage/ {print $2}'
-label =  %output%
-exec = upower -i /org/freedesktop/UPower/devices/battery_BAT0 | awk '/percentage/ {print $2}'
+click-left=kitty -e nmtui
 
 [module/monitor-symbol]
 format-padding = 1
 type = custom/script
 exec = echo "test"
-format-background = #1f1f1f
-format-foreground = #a17afa
-label =
+format-background = #a17afa
+format-foreground = #000000
+label =
 
 [module/speaker-symbol]
 type = custom/script
 exec = echo "test"
 format-padding = 1
-format-background = #1f1f1f
-format-foreground = #ffb3fc
+format-background = #ffb3fc
+format-foreground = #000000
 label =
-
-[module/left1]
-type = custom/script
-exec = echo "test"
-format-padding = 1
-format-background = #1f1f1f
-format-foreground = #ededed
-label =
-
 
 [module/memory-symbol]
 format-padding = 1
 type = custom/script
 exec = echo "test"
 ;format = <label>
-format-background = #1f1f1f
-format-foreground = #ffe054
+format-background = #ffe054
+format-foreground = #000000
 label =
-
-[module/battery-symbol]
-format-padding = 1
-type = custom/script
-exec = echo "test"
-format-background = #1f1f1f
-format-foreground = #ff802b
-label =
-
-[module/separator-1]
-format-padding = 1
-type = custom/script
-exec = echo "test"
-format-background = #1f1f1f
-format-foreground = #ff802b
-label-size = 37
 
 [module/cpu-symbol]
 format-padding = 1
 type = custom/script
 exec = echo "test"
 ;format = <label>
-format-background = #1f1f1f
-format-foreground = #eb4d55
+format-background = #eb4d55
+format-foreground = #000000
 label =
 
 [module/clock-symbol]
@@ -348,8 +301,8 @@ format-padding = 1
 type = custom/script
 exec = echo "test"
 ;format = <label>
-format-background = #1f1f1f
-format-foreground = #a0f774
+format-background = #a0f774
+format-foreground = #000000
 label =
 
 ;[module/homies]
@@ -361,52 +314,43 @@ label =
 ;label =
 ;format-foreground = #ffffff
 
-[module/left2]
-type = custom/text
-content-background = #434C5E 
-content-foreground = #1b1f28
-content = ${glyph.gleft}
-content-font = 2
-
 [module/cpu]
 format-padding = 1
 type = internal/cpu
 interval = 2
 format-prefix = ""
-format-foreground = #eb4d55
-format-background = #1f1f1f
-label =  %percentage:2%%
+format-prefix-foreground = ${colors.foreground-alt}
+format-background = #ededed
+label =%percentage:2%%
 
 [module/custom-separator]
 type = custom/script
-format-padding = 0
+format-padding = 1
 exec = echo " "
 format = <label>
 format-background = #1f1f1f  
 
 [module/memory]
 format-padding = 1
-format-background = #1f1f1f
-format-foreground = #ffe054
+format-background = #ededed
+format-foreground = #000000
 type = internal/memory
 interval = 2
 format-prefix = ""
 format-prefix-foreground = ${colors.foreground-alt}
 ;format-background = #4bffdc
-label =  %percentage_used%% 
+label =%percentage_used%% 
 
 [module/wlan]
 type = internal/network
-interface = wlp3s0
+interface = wlp2s0
 interval = 3.0
-format-foreground = #a1e6d2
-format-connected = %{F#a1e6d2}<label-connected>
-format-connected-background = #1f1f1f
-format-connected-foreground = #a1e6d2
+
+format-connected = <ramp-signal> <label-connected>
+format-connected-background = #ededed
 format-connected-prefix = ""
-format-prefix-foreground = #a1e6d2
 format-connected-padding = 1
-label-connected =   %essid%
+label-connected = %essid%
 
 format-disconnected =
 ;format-disconnected = <label-disconnected>
@@ -423,7 +367,7 @@ ramp-signal-foreground = ${colors.foreground-alt}
 
 [module/eth]
 type = internal/network
-interface = eno1
+interface = eno
 interval = 3.0
 
 format-connected-underline = #55aa55
@@ -438,37 +382,36 @@ format-disconnected =
 ;label-disconnected-foreground = ${colors.foreground-alt}
 
 [module/date]
-format-padding = 1
+format-padding = 2
 type = internal/date
 interval = 1
 
 date =
-date-alt = "  %Y-%m-%d"
+date-alt = "%Y-%m-%d"
 
-time =  %I:%M %p
-time-alt = "  %d/%m/%Y"
+time =%I:%M %p
+time-alt = %H:%M:%S
 
-format-prefix =""
+format-prefix = ""
 format-prefix-foreground = #ffffff
-format-foreground = #a0f774
-format-background = #1f1f1f
+format-foreground = #000000
+format-background = #ededed
 
-label =%time%
+label = %date% %time%
 
 ;hidden = true
 
 [module/pulseaudio]
 type = internal/pulseaudio
 
-format-foreground = #ffb3fc
+format-foreground = #000000
 format-volume = <label-volume>
-label-volume ="  %percentage%% "
-label-volume-foreground = #ffb3fc
-label-volume-background = #1f1f1f
+label-volume =" %percentage%% "
+label-volume-foreground = ${root.foreground}
+label-volume-background = #ededed
 
-label-muted ="  0% "
-label-muted-foreground = #ffb3fc
-label-muted-background = #1f1f1f
+label-muted = 0%
+label-muted-foreground = #666
 
 bar-volume-width = 10
 bar-volume-foreground-0 = #55aa55
@@ -520,47 +463,46 @@ type = internal/battery
 battery = BAT0
 adapter = AC
 full-at = 98
+
+format-charging = <label-charging>
+format-charging-prefix = " "
+format-charging-suffix = " "
+
+format-full = <label-full>
+format-full-prefix = " "
+format-full-suffix = " "
+
+format-discharging = <label-discharging>
+format-discharging-prefix = " "
+format-discharging-suffix = " "
+
 format-padding = 2
-format-charging-background = #1f1f1f
-format-charging-foreground = #ff802b
-format-charging-padding = 1 
-format-discharging-prefix  =  %s%
 
+format-full-background = #ffffff
+format-full-foreground = #000000
 
-format-full-background = #1f1f1f
-format-full-foreground = #ff802b
-format-full-padding = 1
+format-charging-background = #ffffff
+format-charging-foreground = #000000
 
-format-discharging-background = #1f1f1f
-format-discharging-foreground = #ff802b
-format-discharging-padding = 1
+format-discharging-background = #ffffff
+format-discharging-foreground = #000000
 
-;format-charging = <animation-charging> <label-charging>
-;format-charging-underline = #ffb52a
+ramp-capacity-0 = 
+ramp-capacity-1 = 
+ramp-capacity-2 = 
+ramp-capacity-foreground = ${colors.foreground-alt}
 
-;format-discharging = <animation-discharging> <label-discharging>
-;format-discharging-underline = ${self.format-charging-underline}
+animation-charging-0 = 
+animation-charging-1 = 
+animation-charging-2 = 
+animation-charging-foreground = ${colors.foreground-alt}
+animation-charging-framerate = 750
 
-;format-full-prefix = " "
-;format-full-prefix-foreground = ${colors.foreground-alt}
-;format-full-underline = ${self.format-charging-underline}
-
-;ramp-capacity-0 = 
-;ramp-capacity-1 = 
-;ramp-capacity-2 = 
-;ramp-capacity-foreground = ${colors.foreground-alt}
-
-;animation-charging-0 = 
-;animation-charging-1 = 
-;animation-charging-2 = 
-;animation-charging-foreground = ${colors.foreground-alt}
-;animation-charging-framerate = 750
-
-;animation-discharging-0 = 
-;animation-discharging-1 = 
-;animation-discharging-2 = 
-;animation-discharging-foreground = ${colors.foreground-alt}
-;animation-discharging-framerate = 750
+animation-discharging-0 = 
+animation-discharging-1 = 
+animation-discharging-2 = 
+animation-discharging-foreground = ${colors.foreground-alt}
+animation-discharging-framerate = 750
 
 [module/temperature]
 type = internal/temperature
@@ -616,7 +558,7 @@ screenchange-reload = true
 ;compositing-background = screen
 ;compositing-foreground = source
 ;compositing-border = over
-pseudo-transparency = false
+pseudo-transparency = true
 
 [global/wm]
 margin-top = 5

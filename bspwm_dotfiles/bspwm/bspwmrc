@@ -26,3 +26,4 @@ xset -dpms s off &
 bash ~/.config/polybar/launch.sh &
 nitrogen --restore &
 picom &
+/usr/bin/lxqt-policykit-agent &

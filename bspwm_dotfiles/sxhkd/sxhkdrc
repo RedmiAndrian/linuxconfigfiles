@@ -2,6 +2,11 @@
 # wm independent hotkeys
 #
 
+
+# brightness lxqt
+XF86MonBrightness{Up,Down}  
+  lxqt-config-brightness {-i,-d} 
+
 # terminal emulator
 super + Return
 	kitty
@@ -20,7 +25,7 @@ super + Escape
 
 # brightness
 XF86Audio{Raise,Lower}Volume
-    pactl set-sink-volume @DEFAULT_SINK@ {+10%,-10%}
+    pactl set-sink-volume @DEFAULT_SINK@ {+4%,-4%}
 
 
 # quit/restart bspwm
