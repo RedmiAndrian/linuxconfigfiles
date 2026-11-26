@@ -1,0 +1,22 @@
+### This script is for Linux Mint Setup###
+
+sudo apt update
+sudo apt install -y \
+  sway \
+  swaybg \
+  swayidle \
+  swaylock \
+  waybar \
+  wofi \
+  kitty \
+  mako-notifier \
+  libnotify-bin \
+  xdg-desktop-portal-wlr \
+  wl-clipboard \
+  grim \
+  slurp \
+  brightnessctl \
+  playerctl \
+  fonts-font-awesome \
+  fonts-jetbrains-mono \
+  git

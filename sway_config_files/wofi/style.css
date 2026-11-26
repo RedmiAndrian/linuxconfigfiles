@@ -1,0 +1,56 @@
+: "JetBrains Mono", "Font Awesome 6 Free", monospace;window {
+    margin: 0px;
+    border: 2px solid #a6adc8;
+    border-radius: 14px;
+    background-color: rgba(24, 24, 30, 0.94);
+    font-family: "Ubuntu", "Sans", monospace;
+    font-size: 14px;
+}
+
+#input {
+    margin: 12px 12px 6px 12px;
+    padding: 8px 12px;
+    border: none;
+    border-radius: 10px;
+    color: #cdd6f4;
+    background-color: rgba(45, 45, 58, 0.9);
+}
+
+#inner-box {
+    margin: 6px 12px 12px 12px;
+    border: none;
+    background-color: transparent;
+}
+
+#outer-box {
+    margin: 0px;
+    border: none;
+    background-color: transparent;
+}
+
+#scroll {
+    margin: 0px;
+    border: none;
+}
+
+#text {
+    margin: 4px 8px;
+    border: none;
+    color: #cdd6f4;
+}
+
+#entry {
+    padding: 4px 8px;
+    border-radius: 10px;
+}
+
+#entry:selected {
+    background-color: #d9dce6;
+    border-radius: 10px;
+    outline: none;
+}
+
+#entry:selected #text {
+    color: #18181e;
+    font-weight: bold;
+}
